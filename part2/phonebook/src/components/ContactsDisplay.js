@@ -1,11 +1,15 @@
-const PersonDisplay = ({person}) => <li>{person.name} {person.number}</li>
+const PersonDisplay = ({person}) => <div>{person.name} {person.number}</div>
 
-const ContactsDisplay = ({persons}) => {
+const ContactsDisplay = ({persons, onDelete}) => {
     return (<div>
-        <ul>
-            {persons.map(person => <PersonDisplay key={person.id} person={person}/>)}
-        </ul>
-    </div>)
+            <ul>
+                {persons.map(person =>
+                    <li key={person.id}>
+                        <PersonDisplay person={person}/>
+                        <button onClick={onDelete(person.id)}>Delete</button>
+                    </li>)}
+            </ul>
+        </div>
+    )
 }
-
 export default ContactsDisplay
